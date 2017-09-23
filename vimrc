@@ -1,8 +1,9 @@
 execute pathogen#infect()
 
 filetype on
-syntax on
+syntax enable
 colorscheme moonscape
+
 set guifont=Menlo\ Regular:h18
 
 " Number indicator
@@ -27,7 +28,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Better search
 set hlsearch "Highlight search result
-nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR> " Ability to cancel search with escape
 
 " Quickly move back an forth between two files by pressing leader key twice
 nnoremap <Leader><Leader> :e#<CR>
@@ -50,9 +50,6 @@ set shellslash
 " search in a singe file. This will confuse Latex-Suite. Set your grep
 " program to always generate a file-name.
 set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: This enables automatic indentation as you type.
-filetype indent on
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
