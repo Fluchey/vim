@@ -32,6 +32,9 @@ nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR> " Ability to cancel search wit
 " Quickly move back an forth between two files by pressing leader key twice
 nnoremap <Leader><Leader> :e#<CR>
 
+" Switch between errors with shortcut
+nnoremap <Leader><n> :cnext<CR>
+
 " Show matching parenthesis
 set showmatch
 
