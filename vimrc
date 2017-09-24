@@ -1,4 +1,6 @@
-execute pathogen#infect()
+call pathogen#infect()
+call pathogen#helptags()
+
 
 filetype on
 syntax enable
@@ -28,6 +30,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Better search
 set hlsearch "Highlight search result
+nnoremap <F3> :set hlsearch!<CR>
 
 " Quickly move back an forth between two files by pressing leader key twice
 nnoremap <Leader><Leader> :e#<CR>
@@ -37,6 +40,12 @@ nnoremap <Leader><n> :cnext<CR>
 
 " Show matching parenthesis
 set showmatch
+
+" Show a visual line under cursor's current line
+set cursorline
+
+" Enable all python syntax highlight
+let python_highlight_all =1
 
 " VIM-LATEX
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
