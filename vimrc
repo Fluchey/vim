@@ -19,6 +19,8 @@ Plugin 'valloric/youcompleteme'
 Plugin 'scrooloose/nerdtree'
 
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+
+Plugin 'Chiel92/vim-autoformat'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -39,14 +41,23 @@ let mapleader=','
 let maplocalleader = ",,"
 
 "Colors
-colorscheme darth
-set background=dark
+colorscheme papercolor
+"set background=dark
 set colorcolumn=110
 highlight ColorColumn ctermbg=darkgray
+syntax on
+autocmd InsertEnter * set cul
+autocmd InsertLeave * set nocul
 
 " Number Lines
 set number
 set relativenumber
+
+" Better search
+set hlsearch "Highlight search result
+nnoremap <F3> :set hlsearch!<CR>
+
+
 
 " Other
 autocmd vimenter * NERDTree
