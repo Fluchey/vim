@@ -1,67 +1,52 @@
-call pathogen#infect()
-call pathogen#helptags()
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-filetype on
-syntax enable
-colorscheme moonscape
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-set guifont=Menlo\ Regular:h18
+Plugin 'lervag/vimtex'
 
-" Number indicator
-set number
+Plugin 'flazz/vim-colorschemes'
 
+Plugin 'valloric/youcompleteme'
+
+Plugin 'scrooloose/nerdtree'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"
 " Leader key
 let mapleader=','
+let maplocalleader = ",,"
 
-" Keep more info in memory to speed things up
-set hidden
-set history=100
+"Colors
+colorscheme darth
+set background=dark
 
-" Logic when indenting
-filetype indent on
-set nowrap
-set expandtab
-set smartindent
-set autoindent
+" Number Lines
+set relativenumber
 
-" Remove whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
-
-" Better search
-set hlsearch "Highlight search result
-nnoremap <F3> :set hlsearch!<CR>
-
-" Quickly move back an forth between two files by pressing leader key twice
-nnoremap <Leader><Leader> :e#<CR>
-
-" Switch between errors with shortcut
-nnoremap <Leader><n> :cnext<CR>
-
-" Show matching parenthesis
-set showmatch
-
-" Show a visual line under cursor's current line
-set cursorline
-
-" Enable all python syntax highlight
-let python_highlight_all =1
-
-" VIM-LATEX
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
-
-" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
-" can be called correctly.
-set shellslash
-
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat= 'pdf'
+" Other
+autocmd vimenter * NERDTree
+autocmd filetype python nnoremap <F4> :w <bar> exec '!python '.shellescape('%')<CR>
+autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+autocmd VimEnter * wincmd p
