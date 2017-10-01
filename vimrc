@@ -18,6 +18,7 @@ Plugin 'valloric/youcompleteme'
 
 Plugin 'scrooloose/nerdtree'
 
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -40,8 +41,11 @@ let maplocalleader = ",,"
 "Colors
 colorscheme darth
 set background=dark
+set colorcolumn=110
+highlight ColorColumn ctermbg=darkgray
 
 " Number Lines
+set number
 set relativenumber
 
 " Other
@@ -50,3 +54,4 @@ autocmd filetype python nnoremap <F4> :w <bar> exec '!python '.shellescape('%')<
 autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 autocmd VimEnter * wincmd p
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
