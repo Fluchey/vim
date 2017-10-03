@@ -21,6 +21,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 
 Plugin 'Chiel92/vim-autoformat'
+
+Plugin 'jiangmiao/auto-pairs'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -39,15 +42,23 @@ filetype plugin indent on    " required
 " Leader key
 let mapleader=','
 let maplocalleader = ",,"
+noremap <F2> :Autoformat<CR>
+
+" Remap so that auto pairs don't treat å like shit
+let g:AutoPairsShortcutFastWrap=''
 
 "Colors
-colorscheme papercolor
+colorscheme minimalist
+set guifont=inconsolata 
+
+
 "set background=dark
 set colorcolumn=110
 highlight ColorColumn ctermbg=darkgray
 syntax on
 autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
+	
 
 " Number Lines
 set number
@@ -58,7 +69,6 @@ set hlsearch "Highlight search result
 nnoremap <F3> :set hlsearch!<CR>
 
 
-
 " Other
 autocmd vimenter * NERDTree
 autocmd filetype python nnoremap <F4> :w <bar> exec '!python '.shellescape('%')<CR>
@@ -66,3 +76,4 @@ autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.s
 autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 autocmd VimEnter * wincmd p
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+set autoindent
