@@ -48,13 +48,12 @@ noremap <F2> :Autoformat<CR>
 let g:AutoPairsShortcutFastWrap=''
 
 "Colors
-colorscheme minimalist
+colorscheme alduin
 set guifont=inconsolata 
 
 
 "set background=dark
 set colorcolumn=110
-highlight ColorColumn ctermbg=darkgray
 syntax on
 autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
